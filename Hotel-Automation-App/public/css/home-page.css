@@ -1,0 +1,160 @@
+:root {
+  --dark-grey: #636363;
+  --light-grey: #f2f2f2;
+  --dark-blue: #2a59dc;
+  --light-blue: #7ea1ff;
+  --blue: #2a72dc;
+  --palid-blue: #cfdaeb; /* for border on buttons and bottom background*/
+  --shadow: #00000066;
+  --sidebar-wrap-size: 60px;
+  --sidebar-nowrap-size: 250px;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+}
+button {
+  border: 0px;
+}
+
+#page-content-wrapper {
+  width: calc(100% - var(--sidebar-wrap-size));
+  position: absolute;
+  right: 0;
+  transition: 0.4s;
+}
+#page-content-wrapper.active {
+  width: calc(100% - var(--sidebar-nowrap-size));
+}
+
+.upper {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  background-color: var(--light-grey);
+  overflow: hidden;
+}
+.upper img {
+  position: absolute;
+  right: -5%;
+  bottom: 0%;
+
+  height: 120%;
+}
+.text h1 {
+  color: var(--dark-grey);
+  font-weight: 600;
+  font-size: 3em;
+}
+.text h3 {
+  color: var(--dark-grey);
+  font-weight: 400;
+}
+.upper .text {
+  padding: 1rem 0 1rem;
+  margin: 4rem;
+  width: 50%;
+  height: auto;
+}
+.search-bar {
+  width: 850px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: translate(0px, -30px);
+  background-color: white;
+  border-radius: 30px;
+}
+.section {
+  text-align: center;
+  padding: 15px 5px;
+}
+.section .icon {
+  margin-right: 10px;
+  font-size: 1.5em;
+  color: var(--dark-blue);
+  display: inline;
+}
+.section #rangeDate {
+  border: transparent;
+}
+.section #rangeDate::placeholder {
+  color: #212529;
+}
+.form-select {
+  display: inline;
+  width: 80%;
+  border: 0px;
+}
+
+.bottom {
+  width: 100%;
+  height: 60vh;
+  background-color: var(--palid-blue);
+}
+.center {
+  border-left: 2px solid var(--dark-grey);
+}
+.find-btn {
+  background: var(--dark-blue);
+
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  color: white;
+}
+
+.bottom .text {
+  padding-top: 4em;
+  text-align: center;
+}
+.room {
+  position: relative;
+  height: 350px !important;
+  margin: 2rem;
+  color: gray;
+  background-color: white;
+  border-radius: 30px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.room .info {
+  padding: 2rem;
+}
+.info > div {
+  padding: 0.5rem;
+}
+.info .room-price {
+  font-size: 3em;
+  padding: 0;
+}
+.room .type {
+  font-weight: 600;
+  font-size: 1.5em;
+  color: black;
+}
+.nr-persons > i {
+  color: var(--light-blue);
+  font-size: 1.2em;
+}
+.stars > i {
+  font-size: 1.2em;
+}
+.price,
+.reserve {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 0.5rem;
+
+  width: 100%;
+  background-color: var(--dark-blue);
+  color: white;
+  font-size: 2em;
+  font-weight: 600;
+}

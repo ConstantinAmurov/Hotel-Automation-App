@@ -1,0 +1,32 @@
+    <!--Navigation Bar -->
+    <nav class="navigation">
+      <div class="account-icon">
+        <div class="icon">
+          <i class="fas fa-user-circle"></i>
+        </div>
+      </div>
+      <ul>
+        <li id="home-page" onclick=" toggleButton(this.id)"> 
+          <a  href="/home-page" >
+            <span class="icon"><i class="fas fa-home"></i></i></span>
+            <span class="title">Home Page</span>
+          </a>
+        </li>
+        <li id="my-reservations" onclick=" toggleButton(this.id)">
+          <form action="/my-reservations" method="POST">
+<button><span class="icon"><i class="fas fa-suitcase"></i></span>
+            <span class="title">My Reservations</span></button>
+          </form>
+         
+        </li>
+        <li>
+          <div></div>
+          <a href="#">
+            <span class="icon"><i class="fad fa-sign-out-alt"></i></span>
+            <span class="title">Sign Out </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="toggle" onclick="toggleMenu()"> </div>
+ <!--Navigation Bar ends here-->

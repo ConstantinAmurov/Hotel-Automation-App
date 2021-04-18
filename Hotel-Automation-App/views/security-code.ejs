@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<%-include("layouts/Header"); -%>
+<link href="/css/login.css" rel="stylesheet" type="text/css" />
+<body>
+  <div class="back-button-container" id="back-button">
+    <a href="/login"><i class="far fa-arrow-left"></i></a>
+  </div>
+  <div class="login-container">
+    <div class="greeting-text">
+      <h1>HELLO STAFF!</h1>
+      <p>Please enter your security code</p>
+    </div>
+    <div class="credentials">
+      <form action="/security-code" method="POST">
+        <div class="input">
+          <i class="fal fa-key"></i>
+          <input
+            type="text"
+            name="securityKey"
+            id="securityKeyInput"
+            aria-describedby="securityKeyHelp"
+            placeholder=""
+          />
+        </div>
+
+        <div class="button-input">
+          <button class="button" id="buttonSignIn">SIGN IN</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="/scripts/fontawesome.js"></script>
+</body>
+<%- include("layouts/Footer"); -%>

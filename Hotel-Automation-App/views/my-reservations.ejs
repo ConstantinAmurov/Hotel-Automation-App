@@ -1,0 +1,172 @@
+<%- include("layouts/Header"); -%>
+
+  <!--Custom CSS-->
+
+  <link href="/css/my-reservations.css" rel="stylesheet" type="text/css" />
+  <!-- Flatpickr CSS-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/themes/default.css">
+
+  <title>My reservations</title>
+  </head>
+
+  <body>
+
+    <%- include ("layouts/Sidebar"); -%>
+      <div id="page-content-wrapper">
+        <div class="upper">
+          <div class="img"> </div>
+
+          <div class="container ">
+            <div class="row">
+              <div class="text">
+                <h1>Current Reservations</h1>
+              </div>
+            </div>
+          </div>
+
+          <% if(reservations.length===0) { %>
+            <div class="container room"> 
+              <div class="row">
+                <div class="col">Currently you have no reservations</div>
+              </div>
+            </div>
+              
+              <% console.log("no rooms")} %>
+<% let i=0; %>
+
+                <%  reservations.forEach(reservation=> { %>
+                  <div class="container room">
+
+                    <div class="row">
+                      <div class="col-2 room-nr"><span>
+                          <%=reservation.roomNr %>
+                        </span></div>
+                      <div class="col-10 room-info">
+
+                        <div class="container" >
+                          <div class="row">
+                            <div class="col-8 info">
+                              <div>
+                                <h4>
+                                  <%=reservation.roomType %>
+                                </h4>
+                              </div>
+                              <div class="dates">
+                                <div class="row">
+                                  <div class="col" id="start-date"> <i class="fal fa-calendar-alt"></i>
+                                    <p> <%=reservation.startDate.substring(0, 10); %></p>
+                                  </div>
+                                  <div class="col" id="end-date">
+                                    <i class="fal fa-calendar-alt"></i>
+                                     <p><%=reservation.endDate.substring(0, 10); %></p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="nr-persons"> <i class="fal fa-user"></i>
+                                <%=reservation.nrPersons %>
+                              </div>
+
+                            </div>
+                            <div class="col-4 actions">
+                              <div class="row">
+                                <% btnIndex= "checkInModalBtn"+ i %>
+                                <button type="button"  class="col" status=<%=reservation.status %> id=<%=btnIndex %> data-bs-toggle="modal" data-bs-target="#checkInModal">Check
+                                  In</button>
+
+                                <!-- Modal for check in button -->
+                                <div class="modal fade"  id="checkInModal" tabindex="-1"
+                                  aria-labelledby="checkInModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        
+                                        <h5 class="modal-title"  >Check in?</h5>
+                                      </div>
+                                      <div class="modal-body">
+                                        Ready?
+                                      </div>
+                                      <div class="modal-footer">
+
+                                        <button  id="check-in-btn" type="button" class="btn close" data-bs-dismiss="modal">Cancel</button>
+                                        <form action="/check-in" class="btn" method="POST">
+                                          <button type="button">Confirm</button>
+                                        </form>
+
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <% btnIndex= "checkOutModalBtn"+ i %>
+                                <button type="button" status=<%=reservation.status %>   id=<%=btnIndex %> class="col" data-bs-toggle="modal"
+                                  data-bs-target="#checkOutModal">Check  Out</button>
+                                <!-- Modal for check Out button -->
+                                <div class="modal fade" id="checkOutModal" tabindex="-1"
+                                  aria-labelledby="checkInModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                  
+                                        <h5 class="modal-title" id="checkOutModalLabel">Check Out?</h5>
+                                      </div>
+                                      <div class="modal-body">
+                                        This action is final and you will not be able to recover any data
+                                      </div>
+                                      <div class="modal-footer">
+
+                                        <button type="button" class="btn close" data-bs-dismiss="modal">Cancel</button>
+                                        <form action="/check-out" class="btn" method="POST">
+                                          <button type="button">Confirm</button>
+                                        </form>
+
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <% btnIndex= "cancelModalBtn"+ i++ %>
+                                <button type="button" status=<%=reservation.status %>   id=<%=btnIndex %> class="col" data-bs-toggle="modal"
+                                  data-bs-target="#cancelModal">Cancel
+                                  the reservation </button>
+                                <!-- Modal for cancel  button -->
+                                <div class="modal fade" id="cancelModal" tabindex="-1"
+                                  aria-labelledby="checkInModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title"  id="cancelLabel">Cancel your reservation?</h5>
+                                      </div>
+                                      <div class="modal-body">
+                                        This action is final and you will not be able to recover any data
+                                      </div>
+                                      <div class="modal-footer">
+
+                                        <button type="button" class="btn close" data-bs-dismiss="modal">Cancel</button>
+                                        <form action="/cancel-reservation" class="btn" method="POST">
+                                          <button type="button">Confirm</button>
+                                        </form>
+
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <% });%>
+            </div>
+
+
+        </div>
+        <!--Custom scripts-->
+<script src="/scripts/verifycheckinbtn.js"></script>
+<script src="/scripts/verifycheckoutbtn.js"></script>
+<script src="/scripts/verifycancelbtn.js"></script>
+        <%- include("layouts/Footer"); -%>

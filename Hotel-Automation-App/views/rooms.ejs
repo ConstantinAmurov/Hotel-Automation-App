@@ -1,0 +1,184 @@
+<%- include("layouts/Header"); -%>
+
+    <link rel="stylesheet" href="/css/admin.css" />
+    
+    <title>Rooms</title>
+  </head>
+
+  <body>
+    <%- include ("layouts/Sidebar-admin"); -%>
+    <div id="page-content-wrapper">
+
+    <div class="formAddRoom">
+        <h3>Add room
+          <span id="cancelWindow1"><i class="fas fa-times" style="font-size: 2rem;"></i></span>
+        </h3>
+  
+        <form action="#">
+          <label name="nrRoom">Room number: </label>
+            <input name="nrRoom" type="text" min="0" placeholder="0"/><br>
+          <label for="rooTy">Room type: </label>
+          <select id="rType" name="rooTy">
+                  <option value="single">Single Room</option>
+                  <option value="double">Double Room</option>
+                  <option value="triple">Triple Room</option>
+                  <option value="premiere">Premiere Room</option>
+            </select>
+            <br>
+            <label name="pr">Price: </label>
+            <input name="pr" type="text" min="0" placeholder="0"/><br><br>
+            <label name="facilit">Facilities: </label><br><br>
+            <div class="checkBox">
+              <table border="0" style="width:auto;">
+                <tr>
+                  <% rooms.forEach(room => { %>
+                  <td>
+                    <input type="checkbox" id="item1" name="item1" value="x">
+                    <label for="item1"><%= room.facilities %> </label>
+                  </td>
+                  <% }); %>
+                </tr>
+                <!--
+                <tr>
+                  <td>
+                    <input type="checkbox" id="item5" name="item5" value="x">
+                    <label for="item5"> Wifi </label>
+                  </td>
+                  <td>
+                    <input type="checkbox" id="item6" name="item6" value="x">
+                    <label for="item6"> Wifi </label><br>
+                  </td>
+                  <td>
+                    <input type="checkbox" id="item7" name="item7" value="x">
+                    <label for="item7"> Wifi </label><br>
+                  </td>
+                </tr>
+              -->
+              </table>
+            </div>
+            <div id="fBut">
+                <span id="sbmDisc"><input id="butDiscard" type="submit" value="Discard"></span>
+                <span id="sbmAdd"><input id="butAdd" type="submit" value="Add"></span>
+                <br>
+            </div>
+            </tabel>
+        </form>
+    </div>
+  
+    <div class="formEditRoom">
+        <h3>
+          Edit room
+          <span id="cancelWindow2"><i class="fas fa-times" style="font-size: 2rem;"></i></span>
+        </h3>
+  
+        <form action="#">
+            <label name="pr">Price: </label>
+            <input name="pr" type="text" min="0" placeholder="0"/><br><br>
+            <label name="facilit">Facilities: </label><br><br>
+            <div class="checkBox">
+              <table border="0" >
+                <tr>
+                  <% rooms.forEach(room => { %>
+                  <td>
+                    <input type="checkbox" id="item1" name="item1" value="x">
+                    <label for="item1"><%= room.facilities %> </label>
+                  </td>
+                  <% });%>
+                </tr>
+                <!--
+                <tr>
+                  <td>
+                    <input type="checkbox" id="item5" name="item5" value="x">
+                    <label for="item5"> Wifi </label>
+                  </td>
+                  <td>
+                    <input type="checkbox" id="item6" name="item6" value="x">
+                    <label for="item6"> Wifi </label><br>
+                  </td>
+                  <td>
+                    <input type="checkbox" id="item7" name="item7" value="x">
+                    <label for="item7"> Wifi </label><br>
+                  </td>
+                </tr>
+              -->
+              </table>
+            </div>
+            <div id="fBut">
+                <span id="sbmEdit"><input id="editR" type="submit" value="Edit"></span>
+                <br>
+            </div>
+        </form>
+    </div>
+  
+    <div id="deleteRoom">
+      <p style="font-size: 22px;padding-top:5%;">Delete the room?</p>
+      <p style="font-size: 14px; word-wrap: break-word;padding: 10%;">This action is final and you will not be able to recover any data</p>
+      <br>
+      <table id="deleteButtons">
+        <tr>
+          <td>
+            <button id="cancelBut"><span>Cancel</span></button>
+          </td>
+          <td>
+            <button id="confirmBut"><span>Confirm</span></button>
+          </td>
+        </tr>
+      </table>
+    </div>
+      
+      <div id="content">
+  
+        <ul>
+          <li style="padding-left:1%;">Room nr.</li>
+          <li>Room type</li>
+          <li>Price</li>
+          <li>Facilities</li>
+          <li>
+            <button id="addButton" style="background-color: transparent;border:none;"><i class="far fa-plus-square"></i></button>
+          </li>
+        </ul>
+        <br>
+  
+        <ol id="numbers">
+          <% rooms.forEach(room => { %>
+          <div class="itemBck">
+              <li>
+                  <span class="rooId"><%= room.roomNr %></span>
+                  <span class="roomType"><%= room.roomType %></span>
+                  <span class="price" style="padding-left:25%;"><%= room.price %></span>
+                  <span class="facil"><%= room.facilities %></span>
+                  
+                  <button class="imgRecycle" title="Delete room" style="background-color: transparent;border:none;"><i class="fas fa-trash-alt"></i></button>
+                  <button class="imgEdit" title="Edit room" style="background-color: transparent;border:none;"><i class="far fa-edit"></i></button>
+              </li>
+          </div>
+          <% }); %>
+         
+        </ol>
+        
+      </div> 
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script>
+        $(document).on('click', '#addButton', function(){ 
+          $(".formAddRoom").show();
+        });
+        $(document).on('click', '.imgEdit', function(){ 
+          $(".formEditRoom").show();
+        });
+        $(document).on('click', '.imgRecycle', function(){ 
+          $("#deleteRoom").show();
+        });
+        $(document).on('click', '#cancelWindow1', function(){ 
+          $(".formAddRoom").hide();
+        });
+        $(document).on('click', '#cancelWindow2', function(){ 
+          $(".formEditRoom").hide();
+        });
+        $(document).on('click', '#cancelBut', function(){ 
+          $("#deleteRoom").hide();
+        });
+      </script>
+     
+    <%- include("layouts/Footer"); -%>

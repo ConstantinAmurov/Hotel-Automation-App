@@ -1,0 +1,148 @@
+<%- include("layouts/Header"); -%>
+<link rel="stylesheet" href="/css/reservations.css" />
+    <link rel="stylesheet" href="/css/admin.css" />
+      
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+    <title>Reservations</title>
+  </head>
+
+  <body>
+    <%- include ("layouts/Sidebar-admin"); -%>
+    <div id="page-content-wrapper">
+    <div class=" container menusReserv">
+
+        <ul>
+        <li style=""><a id="allBtn" href="#" >All</a></li>
+        <li><a id="specificRoomsBtn" href="#" >Specific rooms</a></li>
+        <div style="display:inline; padding-left:20px">
+            <form id="roomsInput" action="/search-reserv-by-room" method="POST">
+            <input name="roomNumber"  type="text">
+            <button><i id="searchBtn" class="fas fa-search" ></i> </button></i>
+            </form> </div>
+        <table style="border-spacing: 10px;">
+              
+                <tr>
+                    <td>
+                        <form id="dateInput" action="/search-by-date" method="POST">
+            <input type="text" name="rangeDate" id="rangeDate" placeholder="Select Date Range" data-input>
+            <button><i id="searchByDateBtn" class="fas fa-search" ></i> </button></i>
+            </form> </td></div>
+                        
+                    <!-- <td id="date1" style="border-radius:5px 5px 0 0;">
+                        <input type="date" name="beginReserv" id="dC1" style="background-color: #cfdaeb;box-shadow: 1px 1px 5px #2a59dc;" placeholder="dd-mm-yyyy" required>
+                        <i class="fas fa-calendar-alt"></i>
+                    </td>
+                    <td id="date1" style="padding-left:20px;border-radius:5px 5px 0 0;">
+                        <input type="date" name="endReserv" id="dC1" style="background-color: #cfdaeb;box-shadow: 1px 1px 5px #2a59dc;" placeholder="dd-mm-yyyy" required>
+                        <i class="fas fa-calendar-alt"></i>
+                    </td> -->
+                </tr>
+            
+        </table>
+      </ul>
+</div>
+      <div class="container"> 
+          <% let i=0; %>
+                <%  reservations.forEach(reservation=> { %>
+                  <div class="container room">
+
+                    <div class="row">
+                      <div class="col-2 room-nr"><span>
+                          <%=reservation.roomNr %>
+                        </span></div>
+                      <div class="col-10 room-info">
+
+                        <div class="container" >
+                          <div class="row">
+                            <div class="col-8 info">
+                                
+                              <div>
+                                <h4>
+                                  <%=reservation.guest %>
+                                </h4>
+                              </div>
+                              <div class="dates">
+                                <div class="row">
+                                  <div class="col" id="start-date"> <i class="fal fa-calendar-alt"></i>
+                                    <p> <%=reservation.startDate.substring(0, 10); %></p>
+                                  </div>
+                                  <div class="col" id="end-date">
+                                    <i class="fal fa-calendar-alt"></i>
+                                     <p><%=reservation.endDate.substring(0, 10); %></p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="room-type"> 
+                                  <p>Room type: asd<%=reservation.roomType%></p>
+                              </div>
+                              <div class="nr-persons"> 
+                                 
+                                <% if (reservation.status== 0) {%>
+                                    <p>Status : Pending</p>
+                                <% }%>
+                                <% if (reservation.status== 1) {%>
+                                    <p>Status : Checked-In</p>
+                                <% }%>
+                                <% if (reservation.status== 2) {%>
+                                    <p>Status : Checked-Out</p>
+                                <% }%>
+                              </div>
+                              
+
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+      </div>
+       <% });%>
+    </div>
+
+    <!--<script type="text/javascript">
+        function beginDate() {
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+            if (month.length < 2) 
+                month = '0' + month;
+            if (day.length < 2) 
+                day = '0' + day;
+
+            return [year, month, day].join('-');
+        }
+    </script>-->
+
+    <!-- <script>
+      flatpickr("#dC1", {
+        minDate: "today"
+      });
+    </script> -->
+    <script>
+
+    
+$("#basicDate").flatpickr({
+    enableTime: true,
+    dateFormat: "F, d Y H:i"
+});
+$("#rangeDate").flatpickr({
+    mode: 'range',
+    dateFormat: "Y-m-d"
+});
+  </script>
+  <script>
+      $("#specificRoomsBtn").click(function(){
+          $("#roomsInput").css("display", "inline");
+
+      })
+      $("#allBtn").click(function(){
+          $("#roomsInput").css("display", "none");
+
+      })
+  </script>
+
+<%- include("layouts/Footer"); -%>

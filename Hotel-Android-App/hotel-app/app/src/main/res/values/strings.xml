@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">hotel-app</string>
+    <string name="log_in">Log in</string>
+    <string name="enter_password">  Enter password</string>
+    <string name="enter_username">  Enter username</string>
+    <string name="login">LOGIN</string>
+    <string name="create_account">+ CREATE ACCOUNT</string>
+    <string name="test_nfc_directly">test nfc directly</string>
+    <string name="or">- OR -</string>
+    <string name="version">1.0 beta</string>
+</resources>

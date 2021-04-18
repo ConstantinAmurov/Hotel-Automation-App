@@ -1,0 +1,147 @@
+:root {
+  --dark-grey: #636363;
+  --light-grey: #f2f2f2;
+  --dark-blue: #2a59dc;
+  --light-blue: #7ea1ff;
+  --blue: #2a72dc;
+  --palid-blue: #cfdaeb; /* for border on buttons and bottom background*/
+  --shadow: #00000066;
+  --sidebar-wrap-size: 60px;
+  --sidebar-nowrap-size: 250px;
+}
+
+#page-content-wrapper {
+  width: calc(100% - var(--sidebar-wrap-size));
+  position: absolute;
+  right: 0;
+  transition: 0.4s;
+}
+#page-content-wrapper.active {
+  width: calc(100% - var(--sidebar-nowrap-size));
+}
+
+.navigation {
+  position: fixed;
+  width: var(--sidebar-wrap-size);
+  height: 100%;
+  background-image: linear-gradient(#0b40c4, #0b56c2, #113794);
+  transition: 0.4s;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.navigation:hover,
+.navigation.active {
+  width: var(--sidebar-nowrap-size);
+}
+.navigation ul {
+  padding: 0px;
+
+  width: 100%;
+}
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+}
+.navigation ul li:last-child {
+  position: absolute;
+  bottom: 5%;
+}
+.navigation ul li:hover {
+  background: var(--light-blue);
+}
+
+.navigation ul li a {
+  position: relative;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: white;
+}
+.navigation ul li::before {
+  width: 20px;
+  height: 100%;
+  background-color: white;
+}
+
+.navigation ul li a .icon,
+button span.icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.navigation ul li a .title,
+button span.title {
+  position: relative;
+  display: block;
+
+  padding: 0 10px;
+  height: 50px;
+  line-height: 50px;
+  text-align: start;
+  white-space: nowrap;
+}
+.navigation ul li form button {
+  background-color: transparent;
+  color: white;
+  display: flex;
+  padding: 0;
+  border: 0;
+}
+
+#my-reservations > form {
+  position: relative;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: white;
+}
+.navigation.active {
+}
+.account-icon {
+  position: relative;
+  width: 100%;
+  height: 120px;
+}
+.account-icon .icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 3.2em;
+}
+
+.toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  background-color: var(--dark-blue);
+  cursor: pointer;
+  z-index: 2;
+}
+.toggle:hover {
+  background: var(--light-blue);
+}
+.toggle::before {
+  content: "\f0c9";
+  color: white;
+  font-family: fontAwesome;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 50px;
+  text-align: center;
+  font-size: 1.5em;
+}
+.toggle:hover:before {
+  content: "\f00d";
+}

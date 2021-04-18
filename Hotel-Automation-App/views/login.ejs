@@ -1,0 +1,60 @@
+<%- include("layouts/Header"); -%>
+
+<link href="/css/login.css" rel="stylesheet" type="text/css" />
+<body>
+  <div class="login-container">
+    <div class="greeting-text">
+      <h1>HELLO!</h1>
+      <p>Sign into Your Account</p>
+    </div>
+    <div class="credentials">
+      <form action="/login" method="POST">
+        <div class="input">
+          <i class="fal fa-user"></i>
+          <input
+            type="text"
+            name="username"
+            id="usernameInput"
+            aria-describedby="usernameHelp"
+            placeholder=""
+          />
+        </div>
+        <div class="input">
+          <i class="fal fa-lock-alt"></i>
+          <input
+            type="password"
+            name="password"
+            id="passwordInput"
+            aria-describedby="passwordHelp"
+            placeholder=""
+          />
+        </div>
+        <div class="checkbox-input">
+          <input
+            type="checkbox"
+            name="remember-me"
+            id="rememberCheckbox"
+            aria-describedby="checkboxHelp"
+            placeholder=""
+          />
+          <label for="rememberCheckbox"> Remember me</label>
+        </div>
+        <div class="button-input">
+          <button class="button" id="buttonSignIn">SIGN IN</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="/scripts/fontawesome.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    // $(".input").active(function (obj) {
+    //   $(obj.currentTarget).addClass("selected");
+    // });
+  </script>
+</body>
+<%- include("layouts/Footer"); -%>

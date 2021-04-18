@@ -1,0 +1,39 @@
+    <!--Navigation Bar -->
+    <nav class="navigation">
+      <div class="account-icon">
+        <div class="icon">
+          <i class="fas fa-user-circle"></i>
+        </div>
+      </div>
+      <ul>
+        <li id="home-page" onclick=" toggleButton(this.id)"> 
+          <form action="/rooms" method="POST">
+            <button><span class="icon"><i class="fas fa-suitcase"></i></span>
+            <span class="title">Rooms</span>
+          </form>
+        </li>
+        <li id="reservations" onclick=" toggleButton(this.id)">
+          <form action="/reservations" method="POST">
+<button><span class="icon"><i class="fas fa-suitcase"></i></span>
+            <span class="title">Reservations</span></button>
+          </form>
+         
+        </li>
+        <li id="special-offers" onclick=" toggleButton(this.id)">
+          <form action="/special-offers" method="POST">
+<button><span class="icon"><i class="fas fa-envelope"></i></span>
+            <span class="title">Send Special Offers</span></button>
+          </form>
+         
+        </li>
+        <li>
+          <div></div>
+          <a href="#">
+            <span class="icon"><i class="fad fa-sign-out-alt"></i></span>
+            <span class="title">Sign Out </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="toggle" onclick="toggleMenu()"> </div>
+ <!--Navigation Bar ends here-->

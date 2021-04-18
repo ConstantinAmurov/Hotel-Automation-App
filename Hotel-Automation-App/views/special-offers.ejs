@@ -1,0 +1,22 @@
+<%- include("layouts/Header"); -%>
+  <link rel="stylesheet" href="/css/admin.css" />
+  <title>Special offers</title>
+  </head>
+  <body>
+    <%- include ("layouts/Sidebar-admin"); -%>
+
+    <div id="content" style="background-color:#f2f2f2;margin-top:2%;">
+      <h1 style="color:var(--dark-grey);">Send special offers to clients</h1>
+      <form id="formOffers">
+          <input id="textSub" type="text" placeholder="Subject..."/><br>
+          <textarea id="textArea" name="description" placeholder="Some text..."></textarea><br>
+          <span id="buttonsOffers">
+            <input id="butDiscOffer" type="submit" value="Discard">
+            </span>
+            <span id="buttonsOffers">
+            <input id="butSend" type="submit" value="Send offer">
+          </span>
+      </form>
+    </div>
+
+<%- include("layouts/Footer"); -%>
